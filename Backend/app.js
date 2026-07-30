@@ -5,6 +5,7 @@ const cors = require("cors");
 const helmet = require("helmet");
 const morgan = require("morgan");
 const cookieParser = require("cookie-parser");
+const authRoutes = require("./routes/auth.routes");
 
 const errorHandler = require('./middleware/error.middleware');
 
@@ -22,7 +23,9 @@ app.get("/", (req, res) => {
         success: true,
         message: "Vehicle Rental API Running"
     });
-})
+});
+
+app.use("/api/auth", authRoutes);
 
 app.use(errorHandler);
 
