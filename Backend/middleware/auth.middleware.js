@@ -17,7 +17,6 @@ module.exports = async (req, res, next) => {
 
         const decoded = jwt.verify(token, process.env.JWT_SECRET);
 
-        console.log("decoded", decoded);
         req.user = await authService.findUserById(decoded.id);
 
         if(!req.user) {
@@ -29,7 +28,6 @@ module.exports = async (req, res, next) => {
 
         next();
     } catch (error) {
-        console.log("errr", error);
         return res.status(401).json({
             success: false,
             message: "Invalid token"
