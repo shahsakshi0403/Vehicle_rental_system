@@ -5,8 +5,10 @@ const cors = require("cors");
 const helmet = require("helmet");
 const morgan = require("morgan");
 const cookieParser = require("cookie-parser");
-const authRoutes = require("./routes/auth.routes");
+const path = require("path");
 
+const authRoutes = require("./routes/auth.routes");
+const vehicleRoutes = require("./routes/vehicle.routes");
 const errorHandler = require('./middleware/error.middleware');
 
 const app = express();
@@ -25,7 +27,10 @@ app.get("/", (req, res) => {
     });
 });
 
+app.use("/uploads", express.static(path.join(__dirname, "uploads")));
+
 app.use("/api/auth", authRoutes);
+app.use("/api/vehicles", vehicleRoutes);
 
 app.use(errorHandler);
 
