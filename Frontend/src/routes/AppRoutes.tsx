@@ -4,6 +4,7 @@ import { Route, Routes } from "react-router-dom";
 import ProtectedRoute from "./ProtectedRoute";
 import Loader from "../components/common/Loader";
 import DashboardLayout from "../layout/DashboardLayout";
+import NotFound from "../components/common/NotFound";
 
 const Login = lazy(() => import("../pages/Login/Login"));
 
@@ -52,6 +53,8 @@ const AppRoutes = () => {
             </ProtectedRoute>
           }
         />
+
+        <Route path="*" element={<NotFound />} />
       </Routes>
     </Suspense>
   );
