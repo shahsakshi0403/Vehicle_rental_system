@@ -1,16 +1,160 @@
-# React + Vite
+# Vehicle Rental System - Frontend
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A responsive vehicle rental web application built using **React**, **TypeScript**, **Vite**, **Tailwind CSS**, and **Ant Design**.
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+## 🚀 Tech Stack
 
-## React Compiler
+- React 19
+- TypeScript
+- Vite
+- React Router
+- Redux Toolkit
+- Axios
+- Ant Design
+- Tailwind CSS
+- React Hook Form
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+---
 
-## Expanding the ESLint configuration
+## 📂 Folder Structure
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+```
+src/
+│
+├── api/
+├── assets/
+├── components/
+├── hooks/
+├── layouts/
+├── pages/
+├── redux/
+├── routes/
+├── types/
+├── utils/
+├── App.tsx
+└── main.tsx
+```
+
+---
+
+## ⚙️ Installation
+
+Clone Repository
+
+```bash
+git clone <repository-url>
+```
+
+Navigate to Project
+
+```bash
+cd frontend
+```
+
+Install Dependencies
+
+```bash
+npm install
+```
+
+---
+
+## 🔐 Environment Variables
+
+Create a `.env` file.
+
+```env
+VITE_API_URL=http://localhost:5000/api
+```
+
+---
+
+## ▶️ Running the Application
+
+Development
+
+```bash
+npm run dev
+```
+
+Build
+
+```bash
+npm run build
+```
+
+Preview Production Build
+
+```bash
+npm run preview
+```
+
+Application runs at
+
+```
+http://localhost:5173
+```
+
+---
+
+## ✨ Features
+
+- User Authentication
+- JWT Authorization
+- Vehicle Listing
+- Vehicle Search & Filter
+- Book Vehicle
+- View My Bookings
+- Cancel Booking
+- Dashboard Statistics
+- Responsive UI
+- 404 Not Found Page
+
+---
+
+## 📋 Pages
+
+- Login
+- Register
+- Dashboard
+- Vehicles
+- My Bookings
+- 404 Not Found
+
+---
+
+## 🔗 API Integration
+
+The frontend communicates with the backend using Axios.
+
+Configured inside
+
+```
+src/api/axios.ts
+```
+
+Example
+
+```ts
+const api = axios.create({
+  baseURL: import.meta.env.VITE_API_URL,
+});
+```
+
+---
+
+## 📦 Scripts
+
+| Command | Description |
+|----------|-------------|
+| npm run dev | Start Development Server |
+| npm run build | Production Build |
+| npm run preview | Preview Production Build |
+
+---
+
+## 📄 License
+
+This project is developed for educational purposes.
