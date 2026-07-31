@@ -2,7 +2,7 @@ import { Button, Card, Form, Input, Typography, message } from "antd";
 import { LockOutlined, MailOutlined } from "@ant-design/icons";
 import { Controller, useForm } from "react-hook-form";
 import { useDispatch } from "react-redux";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 import { loginUser } from "../../api/auth.api";
 import { loginSuccess } from "../../redux/auth/authSlice";
@@ -84,6 +84,14 @@ const Login = () => {
           <Button htmlType="submit" type="primary" loading={isSubmitting} block>
             Login
           </Button>
+
+          <div className="mt-4 text-center">
+             Don't have an account?{" "}
+            <Link to="/register">
+              Register
+            </Link>
+          </div>
+
         </Form>
       </Card>
     </div>
