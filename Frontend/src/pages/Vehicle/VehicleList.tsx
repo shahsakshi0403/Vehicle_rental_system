@@ -97,11 +97,11 @@ const VehicleList = () => {
         ) : filteredVehicles.length === 0 ? (
           <EmptyState />
         ) : (
-          <>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
             {vehicles.map((vehicle) => (
               <VehicleGrid vehicle={vehicle} onBook={handleBook} />
             ))}
-          </>
+          </div>
         )}
       </div>
 

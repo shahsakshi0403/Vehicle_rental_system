@@ -8,10 +8,10 @@ import DashboardLayout from "../layout/DashboardLayout";
 const Login = lazy(() => import("../pages/Login/Login"));
 
 const Dashboard = lazy(() => import("../pages/Dashboard/Dashboard"));
-
 const VehicleList = lazy(() => import("../pages/Vehicle/VehicleList"));
-
 const Register = lazy(() => import("../pages/Register/Register"));
+const MyBooking = lazy(() => import("../pages/Booking/MyBooking"));
+
 const AppRoutes = () => {
   return (
     <Suspense fallback={<Loader />}>
@@ -37,6 +37,17 @@ const AppRoutes = () => {
             <ProtectedRoute>
               <DashboardLayout>
                 <VehicleList />
+              </DashboardLayout>
+            </ProtectedRoute>
+          }
+        />
+
+        <Route
+          path="/bookings"
+          element={
+            <ProtectedRoute>
+              <DashboardLayout>
+                <MyBooking />
               </DashboardLayout>
             </ProtectedRoute>
           }
