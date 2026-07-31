@@ -1,7 +1,6 @@
 const mongoose = require('mongoose');
-const bcrypt = require("bcrypt");
 
-const VehicleSchema = new mongoose.Schema({
+const vehicleSchema = new mongoose.Schema({
     name: {
         type: String,
         required: [true, "Name is required"],
@@ -59,4 +58,4 @@ const VehicleSchema = new mongoose.Schema({
     timestamps: true,
 });
 
-module.exports = mongoose.model("Vehicle", VehicleSchema);
+module.exports = mongoose.model("Vehicle", vehicleSchema);

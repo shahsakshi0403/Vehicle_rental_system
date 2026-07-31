@@ -1,7 +1,7 @@
 const authService = require("../services/auth.service");
 const generateToken = require("../utils/generateToken");
 
-exports.register = async (req, res, next) => {
+const register = async (req, res, next) => {
     try {
         const { name, email, password } = req.body;
         const existingUser = await authService.findUserByEmail(email);
@@ -31,7 +31,7 @@ exports.register = async (req, res, next) => {
     }
 }
 
-exports.login = async (req, res, next) => {
+const login = async (req, res, next) => {
     try {
         const { email, password } = req.body;
         const user = await authService.findUserWithPassword(email);
@@ -60,4 +60,9 @@ exports.login = async (req, res, next) => {
     } catch(error) {
         next(error);
     }
+}
+
+module.exports = {
+    register,
+    login
 }

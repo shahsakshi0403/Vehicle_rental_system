@@ -9,6 +9,7 @@ const path = require("path");
 
 const authRoutes = require("./routes/auth.routes");
 const vehicleRoutes = require("./routes/vehicle.routes");
+const bookingRoutes = require("./routes/booking.routes");
 const errorHandler = require('./middleware/error.middleware');
 
 const app = express();
@@ -31,6 +32,7 @@ app.use("/uploads", express.static(path.join(__dirname, "uploads")));
 
 app.use("/api/auth", authRoutes);
 app.use("/api/vehicles", vehicleRoutes);
+app.use("/api/bookings", bookingRoutes);
 
 app.use(errorHandler);
 
