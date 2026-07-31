@@ -17,9 +17,13 @@ import SearchBar from "./VehicleSearchBar";
 import VehicleFilter from "./VehicleFilter";
 import VehicleGrid from "./VehicleGrid";
 import Loader from "../../components/common/Loader";
+import BookVehicleModal from "../Booking/BookVehicleModal";
 
 const VehicleList = () => {
   const dispatch = useAppDispatch();
+  const [selectedVehicle, setSelectedVehicle] = useState<string>("");
+
+  const [openBookingModal, setOpenBookingModal] = useState<boolean>(false);
 
   const { vehicles, loading } = useAppSelector((state) => state.vehicle);
 
@@ -70,26 +74,44 @@ const VehicleList = () => {
     setType(value);
   }, []);
 
+  const handleBook = useCallback((id: string) => {
+    setSelectedVehicle(id);
+    setOpenBookingModal(true);
+  }, []);
+
   const filteredVehicles = useMemo(() => {
     return vehicles || [];
   }, [vehicles]);
 
   return (
-    <div className="space-y-6">
-      <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
-        <SearchBar value={search} onChange={handleSearch} />
+    <>
+      <div className="space-y-6">
+        <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
+          <SearchBar value={search} onChange={handleSearch} />
 
-        <VehicleFilter value={type} onChange={handleType} />
+          <VehicleFilter value={type} onChange={handleType} />
+        </div>
+
+        {loading ? (
+          <Loader />
+        ) : filteredVehicles.length === 0 ? (
+          <EmptyState />
+        ) : (
+          <>
+            {vehicles.map((vehicle) => (
+              <VehicleGrid vehicle={vehicle} onBook={handleBook} />
+            ))}
+          </>
+        )}
       </div>
 
-      {loading ? (
-        <Loader />
-      ) : filteredVehicles.length === 0 ? (
-        <EmptyState />
-      ) : (
-        <VehicleGrid vehicles={filteredVehicles} />
-      )}
-    </div>
+      <BookVehicleModal
+        open={openBookingModal}
+        vehicleId={selectedVehicle}
+        onClose={() => setOpenBookingModal(false)}
+        onSuccess={loadVehicles}
+      />
+    </>
   );
 };
 
