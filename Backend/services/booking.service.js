@@ -1,5 +1,5 @@
-const Booking = require("../models/Booking");
-const Vehicle = require("../models/Vehicle");
+const Booking = require("../models/booking");
+const Vehicle = require("../models/vehicle");
 
 const createBooking = async (userId, bookingData) => {
   const vehicle = await Vehicle.findById(bookingData.vehicleId);
@@ -29,9 +29,7 @@ const createBooking = async (userId, bookingData) => {
   if (overlap) throw new Error("Vehicle already booked for selected dates");
 
   const start = new Date(bookingData.startDate);
-
   const end = new Date(bookingData.endDate);
-
   const days = Math.ceil((end - start) / (1000 * 60 * 60 * 24)) + 1;
 
   const booking = await Booking.create({

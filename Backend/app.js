@@ -10,7 +10,7 @@ const path = require("path");
 const authRoutes = require("./routes/auth.routes");
 const vehicleRoutes = require("./routes/vehicle.routes");
 const bookingRoutes = require("./routes/booking.routes");
-const errorHandler = require('./middleware/error.middleware');
+const errorHandler = require("./middleware/error.middleware");
 
 const app = express();
 
@@ -18,14 +18,14 @@ app.use(cors());
 app.use(helmet());
 app.use(morgan("dev"));
 app.use(express.json());
-app.use(express.urlencoded({extended: true}));
+app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());
 
 app.get("/", (req, res) => {
-    res.json({
-        success: true,
-        message: "Vehicle Rental API Running"
-    });
+  res.json({
+    success: true,
+    message: "Vehicle Rental API Running",
+  });
 });
 
 app.use("/uploads", express.static(path.join(__dirname, "uploads")));

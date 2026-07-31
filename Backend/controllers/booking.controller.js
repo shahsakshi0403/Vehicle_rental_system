@@ -10,9 +10,7 @@ const createBooking = async (req, res, next) => {
 
     return res.status(201).json({
       success: true,
-
       message: "Booking created successfully",
-
       data: booking,
     });
   } catch (err) {
@@ -40,9 +38,7 @@ const cancelBooking = async (req, res, next) => {
 
     return res.json({
       success: true,
-
       message: "Booking cancelled",
-
       data: booking,
     });
   } catch (err) {
@@ -50,8 +46,8 @@ const cancelBooking = async (req, res, next) => {
   }
 };
 
-module.export = {
+module.exports = {
   createBooking,
   myBookings,
-  cancelBooking
-}
+  cancelBooking,
+};
