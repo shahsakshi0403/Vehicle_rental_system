@@ -16,5 +16,5 @@ export const getMyBookings = () => {
 };
 
 export const cancelBooking = (id: string) => {
-  return api.delete(`${BOOKING}/cancel/${id}`);
+  return api.put(`${BOOKING}/cancel/${id}`);
 };
